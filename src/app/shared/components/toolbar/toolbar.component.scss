@@ -1,0 +1,20 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
+    justify-content: space-between;
+    padding-inline: 2rem;
+
+    .right-options {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        .menu-toggler {
+            border-radius: 2rem;
+            padding: 0 1rem;
+        }
+    }
+}

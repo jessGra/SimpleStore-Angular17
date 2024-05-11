@@ -1,0 +1,41 @@
+<mat-toolbar>
+  <span>{{ appName }}</span>
+  <div class="right-options">
+    <button
+      mat-icon-button
+      aria-label="theme toggler"
+      (click)="handleToggleTheme()"
+    >
+      <mat-icon>
+        {{ themeService.theme === "dark" ? "light_mode" : "dark_mode" }}
+      </mat-icon>
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      aria-label="user login"
+      class="menu-toggler"
+    >
+      <mat-icon>login</mat-icon>
+      Login
+    </button>
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        [matMenuTriggerFor]="userMenu"
+        aria-label="user menu"
+        class="menu-toggler"
+      >
+        <mat-icon>account_circle</mat-icon>
+        Admin
+      </button>
+      <mat-menu #userMenu="matMenu" xPosition="before">
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
