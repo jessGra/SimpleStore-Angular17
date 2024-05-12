@@ -6,7 +6,7 @@ export interface GetProductDetailsParams {
   more_info_query?: string;
 }
 
-export interface GetProductsParams {
+export interface GetDealsParams {
   country?: FilterCountryCodes;
   offset?: number;
   sort_by?:

@@ -1,17 +1,19 @@
 import { ApiResponse } from './amazon-api';
 
-export interface ProductsResponse extends ApiResponse {
-  data: ProductsResponseData;
+export interface Product extends Deal {}
+
+export interface DealsResponse extends ApiResponse {
+  data: DealsResponseData;
 }
 
-export interface ProductsResponseData {
-  deals: Product[];
+export interface DealsResponseData {
+  deals: Deal[];
   total_deals: null;
   country: string;
   domain: string;
 }
 
-export interface Product {
+export interface Deal {
   deal_id: string;
   deal_type: string;
   deal_title: string;

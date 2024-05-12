@@ -1,0 +1,20 @@
+<div class="responsive-grid">
+  @for (product of productsList; track product.product_asin) {
+  <mat-card (click)="openProductModal(product.product_asin)">
+    <img
+      mat-card-image
+      [src]="product.deal_photo"
+      alt="Photo of Product {{ product.deal_id }}"
+    />
+    <mat-card-content>
+      <span>{{ product.deal_badge }}</span>
+      <span>
+        {{ product.deal_price.amount }} {{ product.deal_price.currency }}
+      </span>
+      <p>
+        {{ product.deal_title }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

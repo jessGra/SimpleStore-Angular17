@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between align-items-center mb-1">
+  <h1>Products</h1>
+  <button
+    class="button-pill"
+    mat-flat-button
+    color="primary"
+    aria-label="Create Product Button"
+    (click)="openNewProductModal()"
+  >
+    <mat-icon>add</mat-icon>
+    Create Product
+  </button>
+</div>
+<app-products-list />
