@@ -1,5 +1,7 @@
 <main>
   <app-toolbar [appName]="appName" />
-  <div class="content-wrapper"></div>
+  <div class="content-wrapper">
+    <router-outlet />
+  </div>
   <app-footer [appName]="appName" />
 </main>
