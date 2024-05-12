@@ -1,8 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { getDealsParams, getProductDetailsParams } from '../types';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { ProductsResponse } from '../interfaces/product';
+import {
+  GetProductDetailsParams,
+  GetProductsParams,
+} from '../interfaces/amazon-api';
 
 @Injectable({
   providedIn: 'root',
@@ -16,17 +20,17 @@ export class AmazonDataService {
 
   private http = inject(HttpClient);
 
-  getProducts(params?: getDealsParams): Observable<any> {
-    return this.http.get(`${this.url}/deals`, {
+  getProducts(params?: GetProductsParams): Observable<ProductsResponse> {
+    return this.http.get<ProductsResponse>(`${this.url}/deals`, {
       headers: this.headers,
-      params,
+      params: params as HttpParams,
     });
   }
 
-  getProductDetails(params: getProductDetailsParams): Observable<any> {
+  getProductDetails(params: GetProductDetailsParams): Observable<any> {
     return this.http.get(`${this.url}/product-details`, {
       headers: this.headers,
-      params,
+      params: params as unknown as HttpParams,
     });
   }
 }

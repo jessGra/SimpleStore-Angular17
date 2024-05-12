@@ -1,6 +1,6 @@
-export interface ProductsResponse {
-  status: string;
-  request_id: string;
+import { ApiResponse } from './amazon-api';
+
+export interface ProductsResponse extends ApiResponse {
   data: ProductsResponseData;
 }
 
