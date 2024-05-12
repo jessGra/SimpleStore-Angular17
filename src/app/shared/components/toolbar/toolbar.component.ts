@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,7 +13,7 @@ import { ThemeService } from '../../../services/theme.service';
   styleUrl: './toolbar.component.scss',
 })
 export class ToolbarComponent {
-  appName = 'Simple Store';
+  @Input() appName: string = '';
   themeService: ThemeService = inject(ThemeService);
 
   handleToggleTheme() {
