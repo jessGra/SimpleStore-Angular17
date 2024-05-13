@@ -1,27 +1,42 @@
 # SimpleStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.1.
+This is a solution to a technical test that emulates a store's product management with real Amazon data from [Rapid Api](https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-amazon-data) and temporary CRUD operations.
 
-## Development server
+Features:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+* Get a products list from the api
+* Simulated Auth State
+* Simulated CRUD operations 
+    >I use data services with the approach of Observables and Signals to keep the CRUD operations changes in the execution memory
+* Dark and Light Theme
+* Create product
+* Edit product
+* Delete product
+* Responsive
+* Form Validations
 
-## Code scaffolding
+This solution demonstrates knowledge in:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular Framework since (v12) to most recent version (v17)
+- Observables and RxJS
+- Signals
+- Angular Material UI
+- Frontend tools and languages (TS, JS, HTML, SCSS, Design)
+- Local Storage to keep client data in the browser
 
-## Build
+## Running on local
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+If is the first time that you cloned the repo you need to install the dependencies. Run `npm i`.
 
-## Running unit tests
+Run `ng serve` to run the app and navigate to `http://localhost:4200/`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+>if you click the login button tha app emulates an authentication state and stores it in localStorage to "keep" the session and allows the management operations
 
-## Running end-to-end tests
+### Notes
+___
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.1.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* The quota limit of the Amazon data api is 100 request / month so if the limit is reached you can generate new api keys [here](https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-amazon-data) and replace it on the `environment` files.
 
-## Further help
+* The app can work without the amazon data too.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
