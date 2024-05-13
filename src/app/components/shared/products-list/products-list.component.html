@@ -3,13 +3,28 @@
   <mat-card (click)="openProductModal(product.product_asin)">
     <button
       mat-mini-fab
-      aria-label="Button to delete a product"
-      (click)="deleteProduct($event, product.product_asin)"
-      class="delete-product-btn d-flex d-lg-none d-xl-none"
-      color="warn"
+      color="primary"
+      (click)="$event.stopPropagation()"
+      [matMenuTriggerFor]="productOptions"
+      aria-label="product menu options"
+      class="product-options-toggler d-flex d-lg-none d-xl-none"
     >
-      <mat-icon>delete</mat-icon>
+      <mat-icon>more_vert</mat-icon>
     </button>
+    <mat-menu #productOptions="matMenu" xPosition="before">
+      <button mat-menu-item>
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button
+        mat-menu-item
+        class="delete-product-btn"
+        (click)="deleteProduct(product.product_asin)"
+      >
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
     <img
       mat-card-image
       [src]="product.deal_photo"

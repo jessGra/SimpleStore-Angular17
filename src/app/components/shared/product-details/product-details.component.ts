@@ -25,8 +25,6 @@ export class ProductDetailsComponent {
   product_asin: string = inject(MAT_DIALOG_DATA);
   product: Product | null | undefined;
 
-  editing: boolean = false; //property to toggle between the form and details view
-
   constructor(private productsService: ProductsService) {
     if (this.product_asin) {
       this.productsService
@@ -34,9 +32,5 @@ export class ProductDetailsComponent {
         .pipe(take(1))
         .subscribe((product) => (this.product = product));
     }
-  }
-
-  setEditingMode(state: boolean) {
-    this.editing = state;
   }
 }

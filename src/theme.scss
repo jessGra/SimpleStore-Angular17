@@ -55,10 +55,9 @@ $dark-text-color: #333;
   @include mat.all-component-themes($light-theme);
 }
 
-$theme-primary-color: mat.get-color-from-palette($light-theme-primary, 300);
-
 :root {
-  --theme-primary-color: #{$theme-primary-color};
+  --theme-primary-color: #{mat.get-color-from-palette($light-theme-primary, 300)};
+  --theme-warn-color: #{mat.get-color-from-palette($light-theme-warn)};
 }
 
 body {

@@ -8,7 +8,7 @@
 mat-card {
   transition: transform 250ms;
 
-  .delete-product-btn {
+  .product-options-toggler {
     position: absolute;
     top: -0.5rem;
     right: -0.5rem;
@@ -27,8 +27,16 @@ mat-card {
     cursor: pointer;
     transform: scale(1.02);
 
-    .delete-product-btn {
+    .product-options-toggler {
       display: flex !important;
     }
+  }
+}
+
+.delete-product-btn {
+  background-color: rgb(from var(--theme-warn-color) r g b / 70%);
+
+  &:hover {
+    background-color: rgb(from var(--theme-warn-color) r g b / 100%);
   }
 }
