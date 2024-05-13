@@ -9,6 +9,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatMiniFabButton } from '@angular/material/button';
 import { SimpleDialogConfirmComponent } from '../simple-dialog-confirm/simple-dialog-confirm.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { ProductDetailsFormComponent } from '../product-details-form/product-details-form.component';
 
 @Component({
   selector: 'app-products-list',
@@ -51,6 +52,16 @@ export class ProductsListComponent {
 
     dialogRef.afterClosed().subscribe((resp) => {
       if (resp) this.productsService.deleteProduct(product_asin);
+    });
+  }
+
+  editProduct(product: Product) {
+    this.modalDialog.open(ProductDetailsFormComponent, {
+      minWidth: '320px',
+      maxWidth: '700px',
+      data: product,
+      enterAnimationDuration: 300,
+      exitAnimationDuration: 250,
     });
   }
 

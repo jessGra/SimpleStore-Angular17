@@ -1,11 +1,14 @@
-<h2 mat-dialog-title>Create New Product</h2>
+<h2 mat-dialog-title>
+  {{ isEditing ? "Edit Product" : "Create New Product" }}
+</h2>
 <form [formGroup]="productFormGroup">
   <mat-dialog-content>
     <div class="mx-auto mb-4 overflow-hidden product-img-wrapper">
       <img
-        [src]="randomImgUrl"
-        alt="Photo of a new Product"
+        [src]="product.deal_photo"
+        alt="Photo the Product"
         height="300"
+        width="350"
         class="img-fluid"
       />
     </div>
@@ -14,9 +17,9 @@
       <mat-form-field appearance="outline" class="col-12">
         <mat-label>Product name</mat-label>
         <input matInput type="text" formControlName="name" />
-        @if (productFormGroup.controls.name.hasError('required')) {
+        @if (productFormGroup.controls['name'].hasError('required')) {
         <mat-error>name is required.</mat-error>
-        } @if (productFormGroup.controls.name.hasError('pattern')) {
+        } @if (productFormGroup.controls['name'].hasError('pattern')) {
         <mat-error>name is invalid.</mat-error>
         }
       </mat-form-field>
@@ -27,10 +30,10 @@
         <mat-icon matPrefix>attach_money</mat-icon>
         <mat-label>Price</mat-label>
         <input matInput type="number" formControlName="price" />
-        @if (productFormGroup.controls.price.hasError('required')) {
+        @if (productFormGroup.controls['price'].hasError('required')) {
         <mat-error>price is required.</mat-error>
-        } @if (productFormGroup.controls.discount.hasError('min') ||
-        productFormGroup.controls.price.hasError('min')) {
+        } @if (productFormGroup.controls['discount'].hasError('min') ||
+        productFormGroup.controls['price'].hasError('min')) {
         <mat-error>price should be > 0.</mat-error>
         }
       </mat-form-field>
@@ -38,10 +41,10 @@
         <mat-label>Discount</mat-label>
         <input matInput type="number" formControlName="discount" />
         <mat-icon matSuffix>percent</mat-icon>
-        @if (productFormGroup.controls.discount.hasError('required')) {
+        @if (productFormGroup.controls['discount'].hasError('required')) {
         <mat-error>discount is required.</mat-error>
-        } @if (productFormGroup.controls.discount.hasError('min') ||
-        productFormGroup.controls.discount.hasError('max')) {
+        } @if (productFormGroup.controls['discount'].hasError('min') ||
+        productFormGroup.controls['discount'].hasError('max')) {
         <mat-error>discount between 0 and 100%.</mat-error>
         }
       </mat-form-field>
@@ -53,9 +56,9 @@
       mat-flat-button
       class="button-pill"
       color="primary"
-      (click)="createProduct()"
+      (click)="saveProduct()"
     >
-      Create
+      Save
     </button>
   </mat-dialog-actions>
 </form>

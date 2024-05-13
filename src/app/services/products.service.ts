@@ -279,6 +279,23 @@ export class ProductsService {
     return product;
   }
 
+  editProduct(product: Product): Product | null {
+    let productsList = this.productsSubject.getValue();
+    const productIndex = productsList.findIndex(
+      (currentProduct: Product) =>
+        currentProduct.product_asin === product.product_asin
+    );
+
+    if (productIndex !== -1) {
+      productsList[productIndex] = product;
+      this.productsSubject.next(productsList);
+      return product;
+    } else {
+      console.error('Product not found for editing:', product.product_asin);
+      return null;
+    }
+  }
+
   deleteProduct(product_asin: string) {
     this.productsSubject.next(
       this.productsSubject
