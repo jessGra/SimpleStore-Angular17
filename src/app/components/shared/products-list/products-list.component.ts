@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
@@ -10,6 +10,7 @@ import { MatMiniFabButton } from '@angular/material/button';
 import { SimpleDialogConfirmComponent } from '../simple-dialog-confirm/simple-dialog-confirm.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { ProductDetailsFormComponent } from '../product-details-form/product-details-form.component';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-products-list',
@@ -21,6 +22,7 @@ import { ProductDetailsFormComponent } from '../product-details-form/product-det
 export class ProductsListComponent {
   productsList: Product[] = [];
   private readonly getProductsSubscription: Subscription | undefined;
+  public readonly authService: AuthService = inject(AuthService);
 
   constructor(
     private readonly productsService: ProductsService,

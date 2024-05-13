@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProductsListComponent } from '../../shared/products-list/products-list.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailsFormComponent } from '../../shared/product-details-form/product-details-form.component';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ import { ProductDetailsFormComponent } from '../../shared/product-details-form/p
 })
 export class HomeComponent {
   private newProductModalDialog: MatDialog = inject(MatDialog);
+  public readonly authService: AuthService = inject(AuthService);
 
   openNewProductModal() {
     this.newProductModalDialog.open(ProductDetailsFormComponent, {
