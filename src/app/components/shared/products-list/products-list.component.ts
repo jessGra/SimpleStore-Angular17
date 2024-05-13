@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { Product } from '../../../interfaces/product';
 import { ProductsService } from '../../../services/products.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products-list',
@@ -14,20 +15,25 @@ import { ProductsService } from '../../../services/products.service';
 })
 export class ProductsListComponent {
   productsList: Product[] = [];
+  private readonly getProductsSubscription: Subscription | undefined;
 
   constructor(
-    // private productsService: ProductsService,
-    private productModalDialog: MatDialog
+    private readonly productsService: ProductsService,
+    private readonly productModalDialog: MatDialog
   ) {
-    // this.productsService
-    //   .getProducts()
-    //   .subscribe((products) => (this.productsList = products));
+    this.getProductsSubscription = this.productsService
+      .getProducts()
+      .subscribe((products) => (this.productsList = products));
   }
 
   openProductModal(product_asin?: string) {
-    // this.productModalDialog.open(ProductDetailsComponent, {
-    //   minWidth: '600px',
-    //   data: product_asin,
-    // });
+    this.productModalDialog.open(ProductDetailsComponent, {
+      minWidth: '600px',
+      data: product_asin,
+    });
+  }
+
+  ngOnDestroy() {
+    this.getProductsSubscription?.unsubscribe();
   }
 }

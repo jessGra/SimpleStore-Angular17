@@ -2,24 +2,33 @@ import { Deal } from './../interfaces/product';
 import { Injectable } from '@angular/core';
 import { DealsResponse, Product } from '../interfaces/product';
 import { AmazonDataService } from './amazon-data.service';
-import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  catchError,
+  map,
+  of,
+  take,
+  tap,
+} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   private productsSubject = new BehaviorSubject<Product[]>([]);
-  private productsList$ = this.productsSubject.asObservable();
+  private readonly productsList$: Observable<Product[]> =
+    this.productsSubject.asObservable();
 
-  constructor(private amazonDataService: AmazonDataService) {
-    this.amazonDataService.getDeals().subscribe({
-      next: (resp: DealsResponse) => {
-        if (resp.status === 'OK' && resp?.data?.deals?.length > 0) {
-          this.productsSubject.next(resp.data.deals);
-        }
-      },
-      error: (error) => console.error(error),
-    });
+  constructor(private readonly amazonDataService: AmazonDataService) {
+    // this.amazonDataService.getDeals().pipe(take(1)).subscribe({
+    //   next: (resp: DealsResponse) => {
+    //     if (resp.status === 'OK' && resp?.data?.deals?.length > 0) {
+    //       this.productsSubject.next(resp.data.deals);
+    //     }
+    //   },
+    //   error: (error) => console.error(error),
+    // });
   }
 
   getProducts() {
@@ -39,6 +48,11 @@ export class ProductsService {
       })
     );
   }
-  createProduct() {}
+
+  createProduct(product: Product): Product {
+    this.productsSubject.next([product, ...this.productsSubject.getValue()]);
+    return product;
+  }
+
   deleteProduct() {}
 }

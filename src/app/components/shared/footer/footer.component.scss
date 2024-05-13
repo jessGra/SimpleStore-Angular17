@@ -1,5 +1,5 @@
 .footer {
-  min-height: calc(var(--mat-toolbar-standard-height) - 1rem * 2);
+  min-height: calc(var(--mat-toolbar-standard-height));
   padding: 1rem 2rem;
   background-color: var(--mat-toolbar-container-background-color);
   display: flex;

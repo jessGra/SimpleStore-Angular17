@@ -1,0 +1,11 @@
+.product-img-wrapper {
+  width: fit-content;
+  border-radius: 1rem;
+  img {
+    transition: transform 300ms;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+}
