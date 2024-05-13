@@ -28,7 +28,7 @@ export class ProductsListComponent {
 
   openProductModal(product_asin?: string) {
     this.productModalDialog.open(ProductDetailsComponent, {
-      minWidth: '600px',
+      minWidth: '320px',
       data: product_asin,
     });
   }

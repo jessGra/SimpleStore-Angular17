@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { ProductsService } from '../../../services/products.service';
 import { Product } from '../../../interfaces/product';
-import { take } from 'rxjs';
 
 @Component({
   selector: 'app-product-details-form',

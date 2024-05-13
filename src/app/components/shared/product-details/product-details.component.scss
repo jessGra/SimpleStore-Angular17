@@ -1,0 +1,35 @@
+.product-img-wrapper {
+  width: fit-content;
+  img {
+    border-radius: 1rem;
+    // max-height: 500px;
+  }
+}
+
+.tag {
+  background-color: var(--theme-primary-color);
+  color: #fff;
+  padding: 0.1rem 0.5rem;
+  width: fit-content;
+  font-family: monospace;
+  font-weight: bold;
+
+  &.deal-type {
+    margin-bottom: 1rem;
+  }
+
+  &.deal-discount {
+    padding: 0 0.5rem;
+    display: inline-block;
+  }
+}
+
+.deal-ends {
+  color: var(--theme-primary-color);
+  background-color: #fff;
+  padding: 0 0.5rem;
+}
+
+mat-dialog-content {
+  max-height: 80vh;
+}

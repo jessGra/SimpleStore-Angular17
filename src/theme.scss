@@ -55,25 +55,35 @@ $dark-text-color: #333;
   @include mat.all-component-themes($light-theme);
 }
 
+$theme-primary-color: mat.get-color-from-palette($light-theme-primary, 300);
+
+:root {
+  --theme-primary-color: #{$theme-primary-color};
+}
+
 body {
-  &::-webkit-scrollbar {
+  &::-webkit-scrollbar,
+  *::-webkit-scrollbar {
     width: 0.5rem;
   }
 
   /* Track */
-  &::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-track {
     background: transparent;
   }
 
   /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: mat.get-color-from-palette($light-theme-primary, 300);
+  &::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-thumb {
+    background: var(--theme-primary-color);
     border-radius: 1rem;
   }
 
   /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: mat.get-color-from-palette($light-theme-primary, 500);
+  &::-webkit-scrollbar-thumb:hover,
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-primary-color);
   }
 }
 

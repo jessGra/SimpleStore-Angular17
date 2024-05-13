@@ -1,0 +1,71 @@
+<!-- @if (product) { @if (editing) {
+<p>editing product {{ product.deal_title }}</p>
+<button
+  class="button-pill"
+  mat-flat-button
+  color="primary"
+  aria-label="Create Product Button"
+  (click)="setEditingMode(false)"
+>
+  Cancel
+</button>
+} @else {
+<p>product-details works! {{ product.deal_title }}</p>
+<button
+  class="button-pill"
+  mat-flat-button
+  color="primary"
+  aria-label="Create Product Button"
+  (click)="setEditingMode(true)"
+>
+  <mat-icon>edit</mat-icon>
+  Edit
+</button>
+}} -->
+<mat-dialog-content>
+  <div class="row">
+    <div
+      class="overflow-hidden product-img-wrapper col-12 col-md-6 mb-3 mb-md-0"
+    >
+      <img
+        [src]="product?.deal_photo"
+        alt="Photo of a new Product"
+        height="300"
+        class="img-fluid"
+      />
+    </div>
+    <div class="col-12 col-md-6">
+      <h2>{{ product?.deal_title }}</h2>
+      <hr />
+      <div class="tag deal-type" *ngIf="product?.deal_type">
+        {{ product?.deal_type?.replace("_", " ") }}
+      </div>
+      <p>
+        Deal price:
+        <span>
+          {{ product?.deal_price?.currency }}
+          {{ product?.deal_price?.amount }}
+        </span>
+        <span *ngIf="product?.savings_percentage" class="tag deal-discount">
+          -{{ product?.savings_percentage }}%
+        </span>
+      </p>
+
+      <p *ngIf="product?.deal_ends_at">
+        Deal ends:
+        <span class="deal-ends">{{ product?.deal_ends_at | timeDiff }}</span>
+      </p>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="button-pill">Close</button>
+  <button
+    mat-flat-button
+    class="button-pill"
+    color="primary"
+    (click)="setEditingMode(true)"
+  >
+    Edit
+  </button>
+</mat-dialog-actions>
