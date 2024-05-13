@@ -14,3 +14,26 @@ body {
 .button-pill {
   border-radius: 2rem !important;
 }
+
+.tag {
+  background-color: var(--theme-primary-color);
+  color: #fff;
+  padding: 0.1rem 0.5rem;
+  width: fit-content;
+  font-family: monospace;
+  font-weight: bold;
+  border-radius: 0.25rem;
+
+  &.deal-type {
+    margin-bottom: 1rem;
+  }
+
+  &.deal-discount {
+    padding: 0 0.5rem;
+    display: inline-block;
+  }
+}
+
+.text-color-theme-primary {
+  color: var(--theme-primary-color);
+}

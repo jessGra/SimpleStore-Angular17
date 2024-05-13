@@ -33,8 +33,8 @@ export class ProductsListComponent {
 
   openProductModal(product_asin?: string) {
     this.modalDialog.open(ProductDetailsComponent, {
-      minWidth: '320px',
       maxWidth: '700px',
+      width: '85%',
       data: product_asin,
     });
   }
@@ -57,8 +57,8 @@ export class ProductsListComponent {
 
   editProduct(product: Product) {
     this.modalDialog.open(ProductDetailsFormComponent, {
-      minWidth: '320px',
       maxWidth: '700px',
+      width: '85%',
       data: product,
       enterAnimationDuration: 300,
       exitAnimationDuration: 250,
