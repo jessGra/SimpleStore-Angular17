@@ -1,6 +1,15 @@
-<div class="responsive-grid">
+<div class="responsive-grid mt-3">
   @for (product of productsList; track product.product_asin) {
   <mat-card (click)="openProductModal(product.product_asin)">
+    <button
+      mat-mini-fab
+      aria-label="Button to delete a product"
+      (click)="deleteProduct($event, product.product_asin)"
+      class="delete-product-btn d-flex d-lg-none d-xl-none"
+      color="warn"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
     <img
       mat-card-image
       [src]="product.deal_photo"

@@ -5,11 +5,14 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 import { Product } from '../../../interfaces/product';
 import { ProductsService } from '../../../services/products.service';
 import { Subscription } from 'rxjs';
+import { MatIcon } from '@angular/material/icon';
+import { MatMiniFabButton } from '@angular/material/button';
+import { SimpleDialogConfirmComponent } from '../simple-dialog-confirm/simple-dialog-confirm.component';
 
 @Component({
   selector: 'app-products-list',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [MatCardModule, MatMiniFabButton, MatIcon],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss',
 })
@@ -19,7 +22,7 @@ export class ProductsListComponent {
 
   constructor(
     private readonly productsService: ProductsService,
-    private readonly productModalDialog: MatDialog
+    private readonly modalDialog: MatDialog
   ) {
     this.getProductsSubscription = this.productsService
       .getProducts()
@@ -27,9 +30,26 @@ export class ProductsListComponent {
   }
 
   openProductModal(product_asin?: string) {
-    this.productModalDialog.open(ProductDetailsComponent, {
+    this.modalDialog.open(ProductDetailsComponent, {
       minWidth: '320px',
       data: product_asin,
+    });
+  }
+
+  deleteProduct(e: Event, product_asin?: string) {
+    e.stopPropagation();
+    if (!product_asin) return;
+
+    const dialogRef = this.modalDialog.open(SimpleDialogConfirmComponent, {
+      width: '250px',
+      data: {
+        message: 'Would you like to delete this product?',
+        title: 'Delete Product',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((resp) => {
+      if (resp) this.productsService.deleteProduct(product_asin);
     });
   }
 
