@@ -1,0 +1,18 @@
+@if(menuItem) {
+<button mat-menu-item aria-label="theme toggler" (click)="handleToggleTheme()">
+  <mat-icon>
+    {{ themeService.theme === "dark" ? "light_mode" : "dark_mode" }}
+  </mat-icon>
+  {{ themeService.theme === "dark" ? "Light" : "Dark" }}
+</button>
+}@else{
+<button
+  mat-icon-button
+  aria-label="theme toggler"
+  (click)="handleToggleTheme()"
+>
+  <mat-icon>
+    {{ themeService.theme === "dark" ? "light_mode" : "dark_mode" }}
+  </mat-icon>
+</button>
+}

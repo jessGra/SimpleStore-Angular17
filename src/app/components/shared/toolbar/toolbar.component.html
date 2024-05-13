@@ -1,39 +1,50 @@
 <mat-toolbar>
   <span class="left-options"><mat-icon>store</mat-icon> {{ appName }}</span>
   <div class="right-options">
-    <button
-      mat-icon-button
-      aria-label="theme toggler"
-      (click)="handleToggleTheme()"
+    <!-- extended options -->
+    <div
+      class="extended-menu d-none d-md-flex align-items-center justify-content-center"
     >
-      <mat-icon>
-        {{ themeService.theme === "dark" ? "light_mode" : "dark_mode" }}
-      </mat-icon>
-    </button>
-    <button
-      mat-raised-button
-      color="primary"
-      aria-label="user login"
-      class="menu-toggler"
-    >
-      <mat-icon>login</mat-icon>
-      Login
-    </button>
-    <div>
+      <app-theme-toggler class="" />
       <button
         mat-raised-button
         color="primary"
+        aria-label="user login"
+        class="button-pill"
+      >
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        aria-label="user login"
+        class="button-pill"
+      >
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+    </div>
+    <!-- collapsed options -->
+    <div class="d-block d-md-none">
+      <button
+        mat-icon-button
+        color="primary"
         [matMenuTriggerFor]="userMenu"
         aria-label="user menu"
-        class="menu-toggler"
+        class="menu-toggler button-pill"
       >
-        <mat-icon>account_circle</mat-icon>
-        Admin
+        <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #userMenu="matMenu" xPosition="before">
+        <app-theme-toggler [menuItem]="true" />
         <button mat-menu-item>
           <mat-icon>logout</mat-icon>
-          <span>Logout</span>
+          Logout
+        </button>
+        <button mat-menu-item>
+          <mat-icon>login</mat-icon>
+          Login
         </button>
       </mat-menu>
     </div>

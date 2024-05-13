@@ -15,11 +15,8 @@ mat-toolbar {
     gap: 0.5rem;
   }
 
-  .right-options {
+  .right-options,
+  .extended-menu {
     gap: 1rem;
-    .menu-toggler {
-      border-radius: 2rem;
-      padding: 0 1rem;
-    }
   }
 }
