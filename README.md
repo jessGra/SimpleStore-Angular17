@@ -40,3 +40,8 @@ ___
 
 * The app can work without the amazon data too.
 
+### Possible Features (Because the time was up 🥴)
+* Add Placeholders to show when is fetching the data.
+* Add more fields to the edit and create forms.
+* Tests.
+* Displaying snack-bar notifications.
